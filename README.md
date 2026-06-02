@@ -1,11 +1,12 @@
 🔐 LAB 16 – Inspection du Trafic HTTPS Android et Contournement du SSL Pinning
-📌 Présentation
+
+Présentation
 
 Dans ce laboratoire, nous avons étudié les mécanismes de protection des communications HTTPS sur Android ainsi que les techniques utilisées lors des audits de sécurité mobile pour inspecter le trafic réseau chiffré.
 
 L'objectif principal consiste à intercepter les communications HTTPS d'une application Android en utilisant Burp Suite comme proxy d'analyse et Objection/Frida pour contourner les mécanismes de SSL Pinning empêchant normalement cette interception.
 
-🎯 Objectifs du laboratoire
+Objectifs du laboratoire
 
 À l'issue de ce TP, nous sommes capables de :
 
@@ -24,7 +25,8 @@ Objection	1.12.4
 Frida	17.9.10
 Burp Suite Community	v2026.4.3
 Émulateur Android	Pixel 4a - Android 11 (API 30)
-🛠️ Étape 1 : Installation des outils Frida et Objection
+
+Étape 1 : Installation des outils Frida et Objection
 
 Afin de réaliser l'instrumentation dynamique de l'application Android, nous installons Frida et Objection à l'aide de Python.
 
@@ -36,7 +38,8 @@ frida --version
 Résultat attendu
 Objection 1.12.4
 Frida 17.9.10
-📱 Étape 2 : Déploiement de Frida Server sur l'émulateur Android
+
+Étape 2 : Déploiement de Frida Server sur l'émulateur Android
 
 Frida nécessite l'exécution d'un serveur sur l'appareil Android afin de permettre l'instrumentation dynamique des applications.
 
@@ -50,8 +53,8 @@ Vérification
 frida-ps -Uai
 
 Cette commande permet d'afficher les processus Android accessibles via Frida et confirme le bon fonctionnement du serveur.
-
-🌐 Étape 3 : Configuration du Proxy Burp Suite
+ 
+Étape 3 : Configuration du Proxy Burp Suite
 
 Pour intercepter les communications HTTPS, Burp Suite est configuré comme proxy intermédiaire entre l'application Android et Internet.
 
@@ -69,9 +72,9 @@ Configurer :
 Adresse : 10.0.2.2
 Port : 8080
 
-📷 Capture : Configuration du proxy Android
+<img width="158" height="208" alt="image" src="https://github.com/user-attachments/assets/d2d1b41e-69b8-4650-8422-5181beeacecc" />
 
-🔒 Étape 4 : Installation du Certificat CA Burp
+Étape 4 : Installation du Certificat CA Burp
 
 Pour que l'appareil Android fasse confiance au proxy Burp Suite, il est nécessaire d'installer son certificat d'autorité de certification (CA).
 
@@ -83,7 +86,8 @@ http://10.0.2.2:8080
 
 Télécharger le certificat proposé par Burp Suite.
 
-📷 Capture : Téléchargement du certificat CA
+<img width="155" height="289" alt="image" src="https://github.com/user-attachments/assets/d8c817c4-09ee-4c1d-80fd-6f969a4424ee" />
+
 
 Installation
 
@@ -94,9 +98,10 @@ Paramètres
 → Certificats
 → Installer depuis le stockage
 
-📷 Captures : Installation du certificat sur Android
+<img width="143" height="286" alt="image" src="https://github.com/user-attachments/assets/bdf01aba-bf69-48f0-9f52-3ad02ce96065" />
 
-🚨 Étape 5 : Désactivation du SSL Pinning
+
+Étape 5 : Désactivation du SSL Pinning
 
 Certaines applications implémentent le SSL Pinning afin d'empêcher les attaques de type Man-In-The-Middle et l'interception du trafic.
 
@@ -105,7 +110,8 @@ Pour contourner cette protection dans un contexte de test de sécurité, nous ut
 Connexion à l'application cible
 objection -g com.android.chrome explore
 
-📷 Capture : Connexion Objection
+<img width="406" height="311" alt="image" src="https://github.com/user-attachments/assets/4cb66842-06fe-43f5-9b77-bcb177a2feea" />
+
 
 Désactivation du SSL Pinning
 android sslpinning disable
@@ -117,7 +123,7 @@ TrustManager
 Conscrypt
 Android Network Security Config
 Bibliothèques SSL personnalisées
-📊 Résultats Obtenus
+
 
 Après la désactivation du SSL Pinning et la configuration du proxy Burp Suite :
 
@@ -129,9 +135,12 @@ Après la désactivation du SSL Pinning et la configuration du proxy Burp Suite 
 
 ✅ Le comportement réseau de l'application peut être étudié dans un contexte d'audit de sécurité mobile.
 
-📷 Capture : Trafic HTTPS intercepté dans Burp Suite
+donc voici laffichage dans burpsuite
 
-📝 Conclusion
+<img width="434" height="191" alt="image" src="https://github.com/user-attachments/assets/20183ef1-a6b0-4e93-8bb0-37ea2c86f416" />
+
+
+Conclusion
 
 Ce laboratoire a permis de mettre en pratique les techniques d'analyse dynamique des applications Android en combinant Frida, Objection et Burp Suite. Nous avons compris le rôle du SSL Pinning dans la sécurisation des communications HTTPS et appris comment le contourner dans un environnement de test contrôlé afin d'observer et d'analyser le trafic réseau d'une application mobile.
 
