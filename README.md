@@ -1,5 +1,4 @@
-🔐 LAB 16 – Inspection du Trafic HTTPS Android et Contournement du SSL Pinning
-
+LAB 16 – Inspection du Trafic HTTPS Android et Contournement du SSL Pinning
 Présentation
 
 Dans ce laboratoire, nous avons étudié les mécanismes de protection des communications HTTPS sur Android ainsi que les techniques utilisées lors des audits de sécurité mobile pour inspecter le trafic réseau chiffré.
@@ -16,7 +15,7 @@ Installer un certificat CA personnalisé sur Android.
 Comprendre le fonctionnement du SSL Pinning.
 Désactiver dynamiquement le SSL Pinning à l'aide d'Objection.
 Capturer et analyser les échanges HTTPS d'une application Android.
-🖥️ Environnement Technique
+Environnement Technique
 Composant	Version
 Système d'exploitation	Windows 10 / Windows 11
 Python	3.12+
@@ -25,7 +24,6 @@ Objection	1.12.4
 Frida	17.9.10
 Burp Suite Community	v2026.4.3
 Émulateur Android	Pixel 4a - Android 11 (API 30)
-
 Étape 1 : Installation des outils Frida et Objection
 
 Afin de réaliser l'instrumentation dynamique de l'application Android, nous installons Frida et Objection à l'aide de Python.
@@ -38,7 +36,6 @@ frida --version
 Résultat attendu
 Objection 1.12.4
 Frida 17.9.10
-
 Étape 2 : Déploiement de Frida Server sur l'émulateur Android
 
 Frida nécessite l'exécution d'un serveur sur l'appareil Android afin de permettre l'instrumentation dynamique des applications.
@@ -125,23 +122,22 @@ Android Network Security Config
 Bibliothèques SSL personnalisées
 
 
-Après la désactivation du SSL Pinning et la configuration du proxy Burp Suite :
+**Après la désactivation du SSL Pinning :**
 
-✅ Les requêtes HTTPS deviennent visibles dans Burp Suite.
-
-✅ Les réponses du serveur peuvent être analysées.
-
-✅ Les en-têtes HTTP, cookies, tokens et paramètres applicatifs sont inspectables.
-
-✅ Le comportement réseau de l'application peut être étudié dans un contexte d'audit de sécurité mobile.
+- Les requêtes HTTPS deviennent visibles dans Burp Suite.
+- Les réponses du serveur peuvent être analysées.
+- Les en-têtes HTTP, cookies et tokens sont inspectables.
+- Le comportement réseau de l'application peut être étudié.
 
 donc voici laffichage dans burpsuite
 
 <img width="434" height="191" alt="image" src="https://github.com/user-attachments/assets/20183ef1-a6b0-4e93-8bb0-37ea2c86f416" />
 
 
-Conclusion
+## Conclusion
 
-Ce laboratoire a permis de mettre en pratique les techniques d'analyse dynamique des applications Android en combinant Frida, Objection et Burp Suite. Nous avons compris le rôle du SSL Pinning dans la sécurisation des communications HTTPS et appris comment le contourner dans un environnement de test contrôlé afin d'observer et d'analyser le trafic réseau d'une application mobile.
+Ce laboratoire a permis de mettre en pratique les techniques d'analyse dynamique des applications Android en combinant **Frida**, **Objection** et **Burp Suite**.
+
+Nous avons compris le rôle du **SSL Pinning** dans la sécurisation des communications HTTPS et appris à le contourner dans un environnement de test contrôlé afin d'observer et d'analyser le trafic réseau d'une application mobile.
 
 Cette démarche constitue une étape essentielle dans les audits de sécurité mobile, les tests d'intrusion Android et l'évaluation de la robustesse des mécanismes de protection des applications.
