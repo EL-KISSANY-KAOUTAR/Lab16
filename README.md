@@ -22,20 +22,6 @@ L'objectif principal consiste à intercepter les communications HTTPS d'une appl
 
 ---
 
-## Environnement Technique
-
-| Composant | Version |
-|---|---|
-| Système d'exploitation | Windows 10 / Windows 11 |
-| Python | 3.12+ |
-| Android Platform Tools (ADB) | Dernière version |
-| Objection | 1.12.4 |
-| Frida | 17.9.10 |
-| Burp Suite Community | v2026.4.3 |
-| Émulateur Android | Pixel 4a - Android 11 (API 30) |
-
----
-
 ## Étape 1 : Installation des outils Frida et Objection
 
 Afin de réaliser l'instrumentation dynamique de l'application Android, nous installons Frida et Objection à l'aide de Python.
