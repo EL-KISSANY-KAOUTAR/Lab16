@@ -132,6 +132,8 @@ Bibliothèques SSL personnalisées
 donc voici laffichage dans burpsuite
 
 <img width="434" height="191" alt="image" src="https://github.com/user-attachments/assets/20183ef1-a6b0-4e93-8bb0-37ea2c86f416" />
+<img width="488" height="287" alt="image" src="https://github.com/user-attachments/assets/8c2af347-516b-47a8-9561-4514cde642ca" />
+
 
 
 ## Conclusion
