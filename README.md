@@ -138,7 +138,6 @@ Pour contourner cette protection dans un contexte de test de sécurité, nous ut
 objection -g com.android.chrome explore
 ```
 
-![Connexion Objection](https://github.com/user-attachments/assets/4cb66842-06fe-43f5-9b77-bcb177a2feea)
 
 **Désactivation du SSL Pinning**
 android sslpinning disable
