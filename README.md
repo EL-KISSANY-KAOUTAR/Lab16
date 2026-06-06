@@ -163,27 +163,6 @@ Affichage dans Burp Suite après désactivation :
 
 ---
 
-## Vérification du travail réalisé
-
-✅ **Ce qui est correct dans ton lab :**
-
-- L'ordre des étapes est logique et cohérent.
-- Les commandes ADB pour déployer frida-server sont correctes.
-- La configuration proxy `10.0.2.2:8080` est bien l'adresse de l'hôte depuis un émulateur Android.
-- L'utilisation d'`objection -g com.android.chrome explore` puis `android sslpinning disable` est la bonne approche (mode attach).
-- Les mécanismes listés comme contournés (OkHttp, TrustManager, etc.) sont exacts.
-
-⚠️ **Points à améliorer / surveiller :**
-
-- Si l'app fait le pinning **très tôt au démarrage**, le mode attach peut être trop tardif. Dans ce cas, utiliser le mode spawn :
-```bash
-  objection -g com.android.chrome explore --startup-command "android sslpinning disable"
-```
-- Il faut s'assurer que la **version de frida-server** correspond **exactement** à la version de Frida installée sur le PC (`frida --version`).
-- Sur Android 14+, l'installation de CA utilisateur est plus restrictive — cela ne s'applique pas ici (API 30) mais bon à savoir.
-
----
-
 ## Conclusion
 
 Ce laboratoire a permis de mettre en pratique les techniques d'analyse dynamique des applications Android en combinant **Frida**, **Objection** et **Burp Suite**.
